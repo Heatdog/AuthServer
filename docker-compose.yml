@@ -1,0 +1,39 @@
+
+
+services:
+  auth_server:
+    image: auth_server:local
+    container_name: auth-erver
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgre
+      - redis
+    networks:
+      - ps
+
+  postgre:
+    image: postgres:16-alpine
+    container_name: ps-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=token_database
+    networks:
+      - ps
+    volumes:
+      - ./migrations/Postgre.sql:/docker-entrypoint-initdb.d/Postgre.sql
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: ps-redis
+    environment:
+      - REDIS_PASSWORD=123
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=0
+    networks:
+      - ps
+
+networks:
+  ps:
+    driver: bridge

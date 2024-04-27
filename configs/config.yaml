@@ -1,0 +1,27 @@
+
+server_listen:
+  ip: 0.0.0.0
+  port: 8080
+
+postgre_settings:
+  host: postgre
+  port: 5432
+  database: token_database
+  username: postgres
+  password: 123
+  time_prepare: 5
+  time_wait: 12
+
+password_key: 123
+
+redis_settings:
+  host: redis
+  port: 6379
+  password: 123
+  database: 0
+  time_prepare: 5
+  token_expiration_days: 30
+
+cache_settings:
+  size: 0
+  ttl_in_minutes: 0
