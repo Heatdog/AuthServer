@@ -8,7 +8,7 @@ import (
 )
 
 func (handler *tokenHandler) confirmHandler(w http.ResponseWriter, r *http.Request) {
-	handler.logger.Debug("login handler")
+	handler.logger.Debug("confirm handler")
 
 	id := r.URL.Query().Get("id")
 	role := r.URL.Query().Get("role")

@@ -83,5 +83,6 @@ func (service *authService) SignUp(ctx context.Context, user authmodel.AuthReque
 
 func (service *authService) Confirm(ctx context.Context, id, role string) error {
 	service.logger.Info("confirm handler", slog.String("id", id), slog.String("role", role))
+	return nil
 
 }
